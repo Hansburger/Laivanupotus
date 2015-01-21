@@ -63,6 +63,9 @@ public class Laiva {
     }
     
     public void kaannaLaivanSuunta() {
+        
+        // tonne settiin pitää vaihtaa arvoja.........................
+        
         if (this.suunta == Suunta.PYSTY) {
             this.suunta = Suunta.VAAKA;
         } else {
