@@ -1,11 +1,13 @@
 
 package laivanupotus.logiikka;
 
-import laivanupotus.domain.Laiva;
 import java.util.*;
 
+import laivanupotus.domain.Laiva;
+import laivanupotus.domain.Piste;
+
 public class Pelilauta {
-    private int[][] lauta;
+    private Piste[][] lauta;
     private int leveys;
     private int korkeus;
     private ArrayList<Laiva> laudanLaivat = new ArrayList<Laiva>();
@@ -19,19 +21,26 @@ public class Pelilauta {
     public Pelilauta(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
-        this.lauta = new int[leveys][korkeus];
+        this.lauta = new Piste[leveys][korkeus];
     }
     
     public void createLauta() {
+        
+        Piste p = null;
+                
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                lauta[i][j] = tyhjaaMerta;
+                p = new Piste(0,0);
+                p.setX(j);
+                p.setY(i);
+                
+                lauta[i][j] = p;
             }
         }
     }
     
-    public int[][] getLauta() {
-        return this.lauta;
+    public Piste[][] getLauta() {
+        return lauta;
     }
     
     public int getKorkeus() {
@@ -42,8 +51,8 @@ public class Pelilauta {
         return leveys;
     }
     
-    public int getSektoriTyyppi(int x, int y) {
+    public Piste getSektoriTyyppi(int x, int y) {
         return lauta[x][y];
     }
-    
+   
 }

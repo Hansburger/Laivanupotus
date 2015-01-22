@@ -8,12 +8,13 @@ public class Peli {
 
     
     public Peli(int leveys, int korkeus) {
+        /*
         this.pelaajanLauta = new Pelilauta(leveys, korkeus);
         pelaajanLauta.createLauta();
         
         this.vihuLauta = new Pelilauta(leveys, korkeus);
         vihuLauta.createLauta();
-        
+        */
         
     }
     

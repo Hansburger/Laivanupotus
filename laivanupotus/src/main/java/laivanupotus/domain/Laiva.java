@@ -50,6 +50,7 @@ public class Laiva {
         for (int i = 0; i < this.pituus; i++) {
             Piste p = new Piste(1, 1);
             p.setX(i+1);
+            p.setOsaLaivaa();
             laivanPisteet.add(p);
         }
     }

@@ -10,6 +10,11 @@ import static org.junit.Assert.*;
 public class PisteTest {
 
     Piste testipiste;
+    Piste testipisteIsompi;
+    Piste testiXIsompi;
+    Piste testiYIsompi;
+    Piste testiXPienempi;
+    Piste testiYPienempi;
 
     public PisteTest() {
     }
@@ -25,6 +30,11 @@ public class PisteTest {
     @Before
     public void setUp() {
         testipiste = new Piste(1, 1);
+        testipisteIsompi = new Piste(2, 2);
+        testiXIsompi = new Piste(2, 1);
+        testiXPienempi = new Piste(0, 1);
+        testiYIsompi = new Piste(1, 2);
+        testiYPienempi = new Piste (1, 0);
     }
 
     @After
@@ -56,5 +66,52 @@ public class PisteTest {
     public void pisteelleVoiAsettaaUudenYArvon() {
         testipiste.setY(2);
         assertEquals(2, testipiste.getY());
+    }
+    
+    @Test
+    public void laivapisteAsettuuOikein() {
+        testipiste.setOsaLaivaa();
+        assertEquals(true, testipiste.onkoOsaLaivaa());
+    }
+    
+    @Test
+    public void pisteeseenAmpuminenToimii() {
+        testipiste.setAmmuttu();
+        assertEquals(true, testipiste.onkoAmmuttuJo());
+    }
+    
+    @Test
+    public void pisteenKomparaattoriToimiiKunVerrataanIsompaan() {
+        assertEquals(-1, testipiste.compareTo(testipisteIsompi));
+    }
+    
+    @Test
+    public void pisteenKomparaattoriToimiiKunVerrataanSamankokoiseen() {
+        Piste lisapiste = new Piste(1,1);
+        assertEquals(0, testipiste.compareTo(lisapiste));
+    }
+    
+    @Test
+    public void pisteenKomparaattoriToimiiKunVerrataanPienempaan() {
+        assertEquals(1, testipisteIsompi.compareTo(testipiste));
+    }
+    
+    @Test
+    public void pisteenKomparaattoriToimiiKunXIsompi() {
+        assertEquals(-1, testipiste.compareTo(testiXIsompi));
+    }
+    @Test
+    public void pisteenKomparaattoriToimiiKunXPienempi() {
+        assertEquals(1, testipiste.compareTo(testiXPienempi));
+    }
+    
+    @Test
+    public void pisteenKomparaattoriToimiiKunYPienempi() {
+        assertEquals(1, testipiste.compareTo(testiYPienempi));
+    }
+    
+    @Test
+    public void pisteenKomparaattoritoimiiKunYIsompi() {
+        assertEquals(-1, testipiste.compareTo(testiYIsompi));
     }
 }

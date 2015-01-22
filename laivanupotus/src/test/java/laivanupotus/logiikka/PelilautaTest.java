@@ -48,14 +48,4 @@ public class PelilautaTest {
         assertEquals(10, testilauta.getLeveys());
     }
     
-    @Test
-    public void pelilaudanKonstruktoiToimii() {
-        assertArrayEquals(new int[10][10], testilauta.getLauta());
-    }
-    
-    @Test
-    public void pelilautaOnTyhjaAlustuksenJalkeen() {
-        testilauta.createLauta();
-        assertEquals(0, testilauta.getSektoriTyyppi(2, 2));
-    }
 }
