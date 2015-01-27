@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.TreeSet;
 
 public class LaivaTest {
 
@@ -15,7 +16,8 @@ public class LaivaTest {
     Laiva kruiseri;
     Laiva subi;
     Laiva partio;
-
+    Laiva debugvene;
+    
     public LaivaTest() {
     }
 
@@ -33,6 +35,7 @@ public class LaivaTest {
         kruiseri = new Laiva(Laiva.LaivaTyyppi.KRUISERI);
         subi = new Laiva(Laiva.LaivaTyyppi.SUKELLUSVENE);
         partio = new Laiva(Laiva.LaivaTyyppi.PARTIOVENE);
+        debugvene = new Laiva(Laiva.LaivaTyyppi.DEBUGPELASTUSVENE);
     }
 
     @After
@@ -82,5 +85,49 @@ public class LaivaTest {
         tukialus.kaannaLaivanSuunta();
         assertEquals(Laiva.Suunta.VAAKA, tukialus.getSuunta());
     }
-
+    
+    @Test
+    public void laivanKonstruktoriAsettaaOikeatPisteet() {
+        Piste alkupiste = tukialus.getPisteet().first();
+        Piste loppupiste = tukialus.getPisteet().last();
+        assertEquals(1, alkupiste.getX());
+        assertEquals(1, alkupiste.getY());
+        assertEquals(5, loppupiste.getX());
+        assertEquals(1, loppupiste.getY());
+    }
+    
+    @Test
+    public void laivanKonstruktoriAsettaaOikeatPisteetmyosDebugveneella() {
+        assertTrue(debugvene.getPisteet().first().equals(debugvene.getPisteet().last()));
+    }
+    
+    @Test
+    public void pisteidenAsetusLaivalleToimii() {
+        tukialus.setLaivanPisteet(3, 2, Suunta.PYSTY);
+        Piste alkupiste = tukialus.getPisteet().first();
+        Piste loppupiste = tukialus.getPisteet().last();
+        assertEquals(3, alkupiste.getX());
+        assertEquals(2, alkupiste.getY());
+        assertEquals(3, loppupiste.getX());
+        assertEquals(6, loppupiste.getY());
+    }
+    
+    @Test
+    public void pisteidenAsetusDebugLaivalleToimii() {
+        debugvene.setLaivanPisteet(2, 5, Suunta.VAAKA);
+        assertTrue(debugvene.getPisteet().first().equals(debugvene.getPisteet().last()));
+    }
+    
+    @Test
+    public void laivanPisteetVaihtuuKaantaessa() {
+        tukialus.kaannaLaivanSuunta();
+    }
+    
+    @Test
+    public void laivanPisteetOvatOsaLaivaa() {
+        for(Piste p : tukialus.getPisteet()) {
+            assertEquals(true, p.onkoOsaLaivaa());
+        }
+    }
+    
 }

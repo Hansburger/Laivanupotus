@@ -114,4 +114,9 @@ public class PisteTest {
     public void pisteenKomparaattoritoimiiKunYIsompi() {
         assertEquals(-1, testipiste.compareTo(testiYIsompi));
     }
+    
+    @Test
+    public void pisteenToStringToimiiAlustetullaPisteella() {
+        assertEquals("(1,1); kuuluu laivaan: false; ammuttu: false", testipiste.toString());
+    }
 }

@@ -40,7 +40,7 @@ public class Pelilauta {
     }
     
     public Piste[][] getLauta() {
-        return lauta;
+        return this.lauta;
     }
     
     public int getKorkeus() {

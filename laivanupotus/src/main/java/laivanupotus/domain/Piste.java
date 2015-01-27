@@ -72,4 +72,9 @@ public class Piste implements Comparable<Piste>{
 
         return 1;
     }
+    
+    @Override
+    public String toString() {
+        return "(" + this.x + "," + this.y + "); " + "kuuluu laivaan: " + osaLaivaa + "; ammuttu: " + ammuttuJo;
+    }
 }
