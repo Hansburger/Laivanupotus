@@ -75,8 +75,17 @@ public class Laiva {
         int uusiX = 0;
         int uusiY = 0;
         // tonne settiin pitÃ¤Ã¤ vaihtaa arvoja.........................
+//        uusiX = piste.getX();
+//        uusiY = piste.getY();
 //        for(Piste p : laivanPisteet) {
 //            // piste kerrallaan lÃ¤pi, 
+//             if (suunta.equals(Suunta.VAAKA) {
+//                  piste.SetX(uusiX);
+//                  piste.SetY(++uusiY);
+//             } else {
+//                 piste.SetX(++uusiX);
+//                 piste.SetX(uusiY);
+//             }
 //        }
         iterator = laivanPisteet.iterator();
         int i = 0;
