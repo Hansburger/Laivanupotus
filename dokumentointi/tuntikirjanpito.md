@@ -9,3 +9,5 @@
 - To 22.1.2015 - 1h - Piste ja Pelilauta -luokkien muokkaamista, luokkakaavion tekeminen, muutama testi lisää.
 
 - Ti 27.1.2015 - 5h - Ongelma ilmeni laivan kääntämisessä ja varsinaisten pisteiden asettamisessa, TreeSetin läpikäynti onnistui Iterator-rajapintaa käyttäen. Tein laivan iteraattorille myös muutaman testin. Piste- ja Laiva -luokille tehty toString()-toiminnallisuus testaamista varten.
+
+- To 29.1.2015 - 4.5h - Laajennettiin luokkaa Pelilauta luomalla sille metodeja laivojen käsittelyyn. Testauksessa kävi ilmi että aiemmin tehty metodi laivan kääntämiseen ei toiminut oikein, joten sitä piti korjata. Korjauksessa hyödynnettiin jo tehtyä Laivan metodia jossa laivan pisteet asetetaan. Luokille Pelilauta ja Laiva laajennuksiin lisättiin testejä. Piti kerrata hieman OhPen ja OhJan materiaaleja, aikaa käytetty niihin noin tunti.

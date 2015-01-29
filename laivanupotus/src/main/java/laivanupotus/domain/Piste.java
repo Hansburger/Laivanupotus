@@ -4,11 +4,9 @@ package laivanupotus.domain;
 public class Piste implements Comparable<Piste>{
     private int x;
     private int y;
-    private boolean osaLaivaa = false;
-    private boolean ammuttuJo = false;
+    private boolean onkoLaiva = false;
+    private boolean onkoAmmuttu = false;
     
-//    public Piste() {
-//    }
     
     public Piste(int inputX, int inputY) {
         this.x = inputX;
@@ -32,19 +30,19 @@ public class Piste implements Comparable<Piste>{
     }
     
     public boolean onkoOsaLaivaa() {
-        return osaLaivaa;
+        return onkoLaiva;
     }
     
-    public void setOsaLaivaa() {
-        this.osaLaivaa = true;
+    public void setOnLaiva() {
+        this.onkoLaiva = true;
     }
     
     public boolean onkoAmmuttuJo() {
-        return ammuttuJo;
+        return onkoAmmuttu;
     }
     
     public void setAmmuttu() {
-        this.ammuttuJo = true;
+        this.onkoAmmuttu = true;
     }
 
     @Override
@@ -75,6 +73,6 @@ public class Piste implements Comparable<Piste>{
     
     @Override
     public String toString() {
-        return "(" + this.x + "," + this.y + "); " + "kuuluu laivaan: " + osaLaivaa + "; ammuttu: " + ammuttuJo;
+        return "(" + this.x + "," + this.y + "); " + "kuuluu laivaan: " + onkoLaiva + "; ammuttu: " + onkoAmmuttu;
     }
 }

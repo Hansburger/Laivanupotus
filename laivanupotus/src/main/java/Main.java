@@ -1,8 +1,8 @@
 import laivanupotus.logiikka.Pelilauta;
+import laivanupotus.logiikka.Peli;
         
 public class Main {
     public static void main(String[] args) {
-        Pelilauta lauta = new Pelilauta(10, 15);
-        lauta.getLauta();
+        Peli p = new Peli(10, 10);
     }
 }

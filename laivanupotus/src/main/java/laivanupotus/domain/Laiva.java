@@ -52,7 +52,7 @@ public class Laiva {
         for (int i = 0; i < this.pituus; ++i) {
             Piste p = new Piste(1, 1);
             p.setX(i + 1);
-            p.setOsaLaivaa();
+            p.setOnLaiva();
             laivanPisteet.add(p);
         }
 //        System.out.println(laivanPisteet.toString());
@@ -71,47 +71,48 @@ public class Laiva {
     }
 
     public void kaannaLaivanSuunta() {
+        
 
-        int uusiX = 0;
-        int uusiY = 0;
         // tonne settiin pitÃ¤Ã¤ vaihtaa arvoja.........................
-//        uusiX = piste.getX();
-//        uusiY = piste.getY();
-//        for(Piste p : laivanPisteet) {
+//        for (Piste p : laivanPisteet) {
+//            int uusiX = p.getX();
+//            int uusiY = p.getY();
 //            // piste kerrallaan lÃ¤pi, 
-//             if (suunta.equals(Suunta.VAAKA) {
-//                  piste.SetX(uusiX);
-//                  piste.SetY(++uusiY);
-//             } else {
-//                 piste.SetX(++uusiX);
-//                 piste.SetX(uusiY);
-//             }
+//            if (suunta.equals(Suunta.VAAKA)) {
+//                p.setX(uusiX);
+//                p.setY(++uusiY);
+//            } else {
+//                p.setX(++uusiX);
+//                p.setX(uusiY);
+//            }
 //        }
-        iterator = laivanPisteet.iterator();
-        int i = 0;
-        while (iterator.hasNext()) {
-            i++; // iteraattori-indeksi
-            Piste piste = iterator.next();
-//            System.out.println(piste);
-            if (i == 0) {
-                uusiX = piste.getX();
-                uusiY = piste.getY();
-            }
-            if (suunta.equals(Suunta.VAAKA)) {
-                piste.setX(uusiX);
-                piste.setY(++uusiY);
-            } else {
-                piste.setX(++uusiX);
-                piste.setY(uusiY);
-            }
-
-        }
+//        iterator = laivanPisteet.iterator();
+//        int i = 0;
+//        while (iterator.hasNext()) {
+//            i++; // iteraattori-indeksi
+//            Piste piste = iterator.next();
+////            System.out.println(piste);
+//            if (i == 0) {
+//                uusiX = piste.getX();
+//                uusiY = piste.getY();
+//            }
+//            if (suunta.equals(Suunta.VAAKA)) {
+//                piste.setX(uusiX);
+//                piste.setY(++uusiY);
+//            } else {
+//                piste.setX(++uusiX);
+//                piste.setY(uusiY);
+//            }
+//
+//        }
 
         if (this.suunta.equals(Suunta.VAAKA)) {
             this.suunta = Suunta.PYSTY;
         } else {
             this.suunta = Suunta.VAAKA;
         }
+        Piste alkupiste = laivanPisteet.first();
+        setLaivanPisteet(alkupiste.getX(), alkupiste.getY(), suunta);
     }
 
     public void setLaivanPisteet(int x, int y, Suunta suunta) {

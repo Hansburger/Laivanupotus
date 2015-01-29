@@ -78,6 +78,22 @@ public class LaivaTest {
 
         assertEquals(Laiva.Suunta.PYSTY, tukialus.getSuunta());
     }
+    
+    @Test
+    public void kannetunLaivanPisteetVaihtuu() {
+        System.out.println(tukialus);
+        tukialus.setLaivanPisteet(2, 3, Suunta.VAAKA);
+        System.out.println(tukialus);
+        tukialus.kaannaLaivanSuunta();
+        System.out.println(tukialus);
+        Piste alkupiste = tukialus.getPisteet().first();
+        Piste loppupiste = tukialus.getPisteet().last();
+        
+        assertEquals(2, alkupiste.getX());
+        assertEquals(3, alkupiste.getY());
+        assertEquals(2, loppupiste.getX());
+        assertEquals(7, loppupiste.getY());
+    }
 
     @Test
     public void laivanSuuntaVaihtuuTakaisin() {
@@ -129,5 +145,6 @@ public class LaivaTest {
             assertEquals(true, p.onkoOsaLaivaa());
         }
     }
+    
     
 }

@@ -70,7 +70,7 @@ public class PisteTest {
     
     @Test
     public void laivapisteAsettuuOikein() {
-        testipiste.setOsaLaivaa();
+        testipiste.setOnLaiva();
         assertEquals(true, testipiste.onkoOsaLaivaa());
     }
     
