@@ -4,6 +4,11 @@ package laivanupotus.logiikka;
 import java.util.Random;
 import laivanupotus.domain.Piste;
 
+/**
+ * Tietokoneen tekoäly joka yrittää ampua lähelle edellistä osumaa mikäli
+ * mahdollista
+ */
+
 public class Tietokone {
     
     private Pelilauta lauta;
@@ -14,6 +19,13 @@ public class Tietokone {
     public Tietokone(Pelilauta lauta) {
         this.lauta = lauta;
     }
+    
+    /**
+     * Metodi ampumiseen joka arpoo kohdepisteen
+     * Jos aiempi ammus osui, suorittaa toisen metodin joka pyrkii löytämään 
+     * pisteen aiemman läheltä
+     * @return 
+     */
     
     public boolean ammu() {
         
@@ -35,11 +47,22 @@ public class Tietokone {
         return osui;
     }
     
+    /**
+     * Metodi arpoo X- ja Y-koordinaatit jotka se asettaa pisteelle
+     * @return palauttaa Piste-olion
+     */
+    
     private Piste arvoKohde() {
         int x = random.nextInt(lauta.getLeveys());
         int y = random.nextInt(lauta.getKorkeus());
         return new Piste(x,y);
     }
+    
+    /**
+     * Metodi arpoo koordinaatit jotka se asettaa palautettavalle Piste-oliolle
+     * Arpoo suunnan josta aletaan etsiä uutta kohdetta
+     * @return palauttaa Piste-olion
+     */
     
     private Piste arvoKohdeEdellisenViereen() {
         int x = edellinenOsuma.getX();

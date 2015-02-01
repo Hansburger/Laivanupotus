@@ -12,4 +12,4 @@
 
 - To 29.1.2015 - 4.5h - Laajennettiin luokkaa Pelilauta luomalla sille metodeja laivojen käsittelyyn. Testauksessa kävi ilmi että aiemmin tehty metodi laivan kääntämiseen ei toiminut oikein, joten sitä piti korjata. Korjauksessa hyödynnettiin jo tehtyä Laivan metodia jossa laivan pisteet asetetaan. Luokille Pelilauta ja Laiva laajennuksiin lisättiin testejä. Piti kerrata hieman OhPen ja OhJan materiaaleja, aikaa käytetty niihin noin tunti.
 
-- Su 1.2.2015 - 3h - Laivan enumeraattorien jakaminen omiin luokkiin, tekoälyluokan ensimmäinen versio.
+- Su 1.2.2015 - 3.5h - Laivan enumeraattorien jakaminen omiin luokkiin, tekoälyluokan ensimmäinen versio. Alustavan javadoc-dokumentoinnin tekeminen.
