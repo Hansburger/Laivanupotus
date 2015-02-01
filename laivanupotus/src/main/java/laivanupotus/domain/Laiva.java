@@ -2,51 +2,25 @@ package laivanupotus.domain;
 
 import java.util.*;
 
+import laivanupotus.domain.LaivaTyyppi;
+import laivanupotus.domain.Suunta;
+
 public class Laiva {
-
-    public enum LaivaTyyppi {
-
-        TUKIALUS(5), KRUISERI(4), SUKELLUSVENE(3), PARTIOVENE(2), DEBUGPELASTUSVENE(1);
-        private int tyyppi;
-
-        LaivaTyyppi(int tyyppi) {
-            this.tyyppi = tyyppi;
-        }
-
-        public int getTyyppi() {
-            return this.tyyppi;
-        }
-    }
-
-    public enum Suunta {
-
-        VAAKA(0), PYSTY(1);
-        private int suunta;
-
-        private Suunta(int suunta) {
-            this.suunta = suunta;
-        }
-
-        public int getSuunta() {
-            return this.suunta;
-        }
-
-    }
 
     private int pituus;
     private Suunta suunta;
     private TreeSet<Piste> laivanPisteet;
     private Iterator<Piste> iterator;
-//    private Piste alkuPiste;
-//    private Piste loppuPiste;
 
     public Laiva(LaivaTyyppi tyyppi) {
         this.pituus = tyyppi.getTyyppi();
         this.suunta = suunta.VAAKA;
-//        this.alkuPiste = alkuPiste;
-//        this.loppuPiste = loppuPiste;
         laivanPisteet = new TreeSet<Piste>();
+        alustaLaiva();
 
+    }
+
+    private void alustaLaiva() {
 //        alustetaan laiva vaakatasoon, luodaan laivalle pisteet alkaen koordinaateista (1,1):
 //        selkeyttÃ¤Ã¤ testaamista.
         for (int i = 0; i < this.pituus; ++i) {
@@ -55,7 +29,6 @@ public class Laiva {
             p.setOnLaiva();
             laivanPisteet.add(p);
         }
-//        System.out.println(laivanPisteet.toString());
     }
 
     public int getPituus() {
@@ -71,40 +44,6 @@ public class Laiva {
     }
 
     public void kaannaLaivanSuunta() {
-        
-
-        // tonne settiin pitÃ¤Ã¤ vaihtaa arvoja.........................
-//        for (Piste p : laivanPisteet) {
-//            int uusiX = p.getX();
-//            int uusiY = p.getY();
-//            // piste kerrallaan lÃ¤pi, 
-//            if (suunta.equals(Suunta.VAAKA)) {
-//                p.setX(uusiX);
-//                p.setY(++uusiY);
-//            } else {
-//                p.setX(++uusiX);
-//                p.setX(uusiY);
-//            }
-//        }
-//        iterator = laivanPisteet.iterator();
-//        int i = 0;
-//        while (iterator.hasNext()) {
-//            i++; // iteraattori-indeksi
-//            Piste piste = iterator.next();
-////            System.out.println(piste);
-//            if (i == 0) {
-//                uusiX = piste.getX();
-//                uusiY = piste.getY();
-//            }
-//            if (suunta.equals(Suunta.VAAKA)) {
-//                piste.setX(uusiX);
-//                piste.setY(++uusiY);
-//            } else {
-//                piste.setX(++uusiX);
-//                piste.setY(uusiY);
-//            }
-//
-//        }
 
         if (this.suunta.equals(Suunta.VAAKA)) {
             this.suunta = Suunta.PYSTY;

@@ -1,7 +1,8 @@
 package laivanupotus.domain;
 
 import laivanupotus.domain.Laiva;
-import laivanupotus.domain.Laiva.Suunta;
+import laivanupotus.domain.Suunta;
+import laivanupotus.domain.LaivaTyyppi;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,11 +32,11 @@ public class LaivaTest {
 
     @Before
     public void setUp() {
-        tukialus = new Laiva(Laiva.LaivaTyyppi.TUKIALUS);
-        kruiseri = new Laiva(Laiva.LaivaTyyppi.KRUISERI);
-        subi = new Laiva(Laiva.LaivaTyyppi.SUKELLUSVENE);
-        partio = new Laiva(Laiva.LaivaTyyppi.PARTIOVENE);
-        debugvene = new Laiva(Laiva.LaivaTyyppi.DEBUGPELASTUSVENE);
+        tukialus = new Laiva(LaivaTyyppi.TUKIALUS);
+        kruiseri = new Laiva(LaivaTyyppi.KRUISERI);
+        subi = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        partio = new Laiva(LaivaTyyppi.PARTIOVENE);
+        debugvene = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
     }
 
     @After
@@ -76,7 +77,7 @@ public class LaivaTest {
 
         tukialus.kaannaLaivanSuunta();
 
-        assertEquals(Laiva.Suunta.PYSTY, tukialus.getSuunta());
+        assertEquals(Suunta.PYSTY, tukialus.getSuunta());
     }
     
     @Test
@@ -99,7 +100,7 @@ public class LaivaTest {
     public void laivanSuuntaVaihtuuTakaisin() {
         tukialus.kaannaLaivanSuunta();
         tukialus.kaannaLaivanSuunta();
-        assertEquals(Laiva.Suunta.VAAKA, tukialus.getSuunta());
+        assertEquals(Suunta.VAAKA, tukialus.getSuunta());
     }
     
     @Test
