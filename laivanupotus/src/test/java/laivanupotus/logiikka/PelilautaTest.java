@@ -52,10 +52,10 @@ public class PelilautaTest {
     }
     
     @Test
-    public void ammuntaToimiiKunAmmutaanJoAmmuttuun() {
+    public void ammuntaEiToimiKunAmmutaanJoAmmuttuun() {
         testilauta.ammu(3, 4);
         
-        assertEquals(false, testilauta.ammu(3, 4));
+        assertFalse(testilauta.ammu(3, 4));
     }
     
     @Test
@@ -106,6 +106,11 @@ public class PelilautaTest {
     @Test
     public void eiVoidaAmpuaNegatiivisiinKoordinaatteihin() {
         assertFalse(testilauta.ammu(-1, -1));
+    }
+    
+    @Test
+    public void voidaanAmpuaTyhjaanPisteeseen() {
+        assertTrue(testilauta.ammu(1,1));
     }
 
 }

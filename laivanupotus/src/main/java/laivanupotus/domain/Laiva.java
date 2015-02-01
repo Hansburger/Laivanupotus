@@ -5,6 +5,11 @@ import java.util.*;
 import laivanupotus.domain.LaivaTyyppi;
 import laivanupotus.domain.Suunta;
 
+
+/**
+ * Luokka joka sisältää pelin laivojen toiminnaliisuudet
+ */
+
 public class Laiva {
 
     private int pituus;
@@ -20,6 +25,10 @@ public class Laiva {
 
     }
 
+    
+    /**
+     * Metodi alustaa laivalle sen pituuden verran pisteitä laivan omaan TreeSet tietorakenteeseen.
+     */
     private void alustaLaiva() {
 //        alustetaan laiva vaakatasoon, luodaan laivalle pisteet alkaen koordinaateista (1,1):
 //        selkeyttÃ¤Ã¤ testaamista.
@@ -42,6 +51,11 @@ public class Laiva {
     public Suunta getSuunta() {
         return suunta;
     }
+    
+    /**
+     * Metodi iteroi laivan pisteet läpi ja vaihtaa niiden X- ja Y-arvoja perustuen 
+     * siihen mihin suuntaan laiva käännetään.
+     */
 
     public void kaannaLaivanSuunta() {
 
@@ -53,6 +67,13 @@ public class Laiva {
         Piste alkupiste = laivanPisteet.first();
         setLaivanPisteet(alkupiste.getX(), alkupiste.getY(), suunta);
     }
+    
+    /**
+     * 
+     * @param x laivan uuden aloituspisteen x-koordinaatti
+     * @param y laivan uuden aloituspisteen y-koordinaatti
+     * @param suunta laivan suunta
+     */
 
     public void setLaivanPisteet(int x, int y, Suunta suunta) {
         iterator = laivanPisteet.iterator();

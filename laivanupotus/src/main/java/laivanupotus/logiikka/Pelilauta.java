@@ -5,6 +5,11 @@ import java.util.*;
 import laivanupotus.domain.Laiva;
 import laivanupotus.domain.Piste;
 
+/**
+ * Luokka tarjoaa toiminnallisuudet laivojen käsittelyyn pelissä
+ * Pelilaudan koko perustuu käyttäjän antamiin parametreihin laudan koosta
+ */
+
 public class Pelilauta {
 
     private Piste[][] lauta;
@@ -12,18 +17,17 @@ public class Pelilauta {
     private int korkeus;
     private ArrayList<Laiva> laudanLaivat = new ArrayList<Laiva>();
 
-    // sektorityypit
-//    ei taideta tarvita
-//    final static int tyhjaaMerta = 0;
-//    final static int laiva = 1;
-//    final static int ammuttuOsu = 2;
-//    final static int ammuttuOhi = 3;
 
     public Pelilauta(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.lauta = new Piste[leveys][korkeus];
     }
+    
+    /**
+     * Metodi alustaa pelilaudan perustuen laudalle annettujen oliomuuttujien 
+     * mukaan
+     */
 
     public void createLauta() {
 
@@ -54,6 +58,13 @@ public class Pelilauta {
 //         System.out.println(lauta[x][y]);
 //    }
 
+    /**
+     * Asettaa parametrina annetun laivan pelilaudalle, suorittaa tarkistusmetodit
+     * jotka vaikuttavat palautusarvoon
+     * @param laiva annettu laiva joka halutaan sijoittaa laudalle
+     * @return palauttaa true jos laivan asettaminen onnistui
+     */
+    
     public boolean asetaLaivaLaudalle(Laiva laiva) {
         if (laivaOnLaudanSisalla(laiva) && LaivaEiMeneToisenLaivanPaalle(laiva)) {
             laudanLaivat.add(laiva);
@@ -66,6 +77,14 @@ public class Pelilauta {
         }
         return false;
     }
+    
+    /**
+     * Metodi huolehtii että parametrina annetun laivan pisteet menevät laudan
+     * sisäpuolelle.
+     * @param laiva laiva jonka pisteet tarkistetaan
+     * @return palauttaa true jos laivan pisteet menevät laudan sisälle,
+     * muulloin false
+     */
 
     public boolean laivaOnLaudanSisalla(Laiva laiva) {
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
@@ -88,6 +107,13 @@ public class Pelilauta {
         return true;
     }
     
+    /**
+     * Metodi tarkistaa ettei haluttu laiva mene toisen laivan päälle päälle
+     * @param laiva Laiva joka halutaan asettaa
+     * @return palauttaa false jos laiva menee toisen laivan päälle laudalla,
+     * muulloin true
+     */
+    
     public boolean LaivaEiMeneToisenLaivanPaalle(Laiva laiva) {
         
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
@@ -104,6 +130,14 @@ public class Pelilauta {
         return true;
     }
     
+    /**
+     * Metodi tarjoaa pelilaudalle ampumistoiminallisuuden
+     * @param x ammuttavan pisteen x-koordinaatti
+     * @param y ammuttavan pisteen y-koordinaatti
+     * @return palauttaa true jos ammuttavaan pisteeseen ei ole ammuttu tai 
+     * siinä on laiva
+     */
+    
     public boolean ammu(int x, int y) {
         if (x > leveys || y > leveys) {
 //            System.out.println("ei pysty");
@@ -115,6 +149,11 @@ public class Pelilauta {
         }
         
         if (lauta[x][y].onkoOsaLaivaa() && !(lauta[x][y].onkoAmmuttuJo())) {
+            lauta[x][y].setAmmuttu();
+            return true;
+        }
+        
+        if (!(lauta[x][y].onkoAmmuttuJo())) {
             lauta[x][y].setAmmuttu();
             return true;
         }

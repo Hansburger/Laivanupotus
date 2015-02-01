@@ -1,6 +1,10 @@
 
 package laivanupotus.domain;
 
+/**
+ * Luokkaa käytetään pelilaudan ja laivojen toiminallisuuksien mahdollistamiseen
+ */
+
 public class Piste implements Comparable<Piste>{
     private int x;
     private int y;
