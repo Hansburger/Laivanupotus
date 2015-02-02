@@ -16,6 +16,7 @@ public class Pelilauta {
     private int leveys;
     private int korkeus;
     private ArrayList<Laiva> laudanLaivat = new ArrayList<Laiva>();
+    private HashMap<Piste, Laiva> laivojenPisteet = new HashMap<Piste, Laiva>();
 
 
     public Pelilauta(int leveys, int korkeus) {
@@ -29,15 +30,15 @@ public class Pelilauta {
      * mukaan
      */
 
-    public void createLauta() {
+    public void luoLauta() {
 
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
+        for (int y = 0; y < korkeus; y++) {
+            for (int x = 0; x < leveys; x++) {
                 Piste p = new Piste(0, 0);
-                p.setX(j);
-                p.setY(i);
+                p.setX(x);
+                p.setY(y);
 
-                lauta[i][j] = p;
+                lauta[x][y] = p;
             }
         }
     }
@@ -72,6 +73,7 @@ public class Pelilauta {
                 int tempX = p.getX();
                 int tempY = p.getY();
                 lauta[tempX][tempY].setOnLaiva();
+                laivojenPisteet.put(p, laiva);
             }
             return true;
         }
@@ -131,7 +133,18 @@ public class Pelilauta {
     }
     
     /**
-     * Metodi tarjoaa pelilaudalle ampumistoiminallisuuden
+     * Metodi tarkistaa onko mahdollista ampua annettuun pisteeseen
+     * @param p annettu piste-olio
+     * @return palauttaa true jos onnistui
+     */
+    
+    public boolean ammu(Piste p) {
+        return ammu(p.getX(), p.getY());
+    }
+    
+    /**
+     * Metodi tarjoaa pelilaudalle ampumistoiminallisuuden ja tarkistaa jos on
+     * mahdollista ampua annettuihin koordinaatteihin
      * @param x ammuttavan pisteen x-koordinaatti
      * @param y ammuttavan pisteen y-koordinaatti
      * @return palauttaa true jos ammuttavaan pisteeseen ei ole ammuttu tai 
@@ -139,7 +152,7 @@ public class Pelilauta {
      */
     
     public boolean ammu(int x, int y) {
-        if (x > leveys || y > leveys) {
+        if (x > leveys || y > korkeus) {
 //            System.out.println("ei pysty");
             return false;
         }
@@ -150,6 +163,7 @@ public class Pelilauta {
         
         if (lauta[x][y].onkoOsaLaivaa() && !(lauta[x][y].onkoAmmuttuJo())) {
             lauta[x][y].setAmmuttu();
+            lauta[x][y].setOsuttu();
             return true;
         }
         
@@ -161,8 +175,45 @@ public class Pelilauta {
         return false;
     }
     
+    
+    /**
+     * Metodi tarkistaa onko laudan kaikki laivat upotettu.
+     * Metodi on olennainen, kun pitää tarkistaa pitääkö peli päättää
+     * @return palauttaa true jos laudalla ei ole yhtäkään elävää laivaa
+     */
+    
+    public boolean onkoKaikkiLaivatUpotettu() {
+        boolean kaikkiUponneet = true;
+        for (int y = 0; y < korkeus; y++) {
+            for (int x = 0; x < leveys; x++) {
+                    if (lauta[x][y].onkoOsaLaivaa() && !lauta[x][y].onkoOsuttu()) {
+                        kaikkiUponneet = false;
+                    }
+                }
+        }
+        return kaikkiUponneet;
+    }
+    
     public String getLaivojenMaara() {
         return "Laivoja pelikentalla: " + laudanLaivat.size();
+    }
+    
+    public void tulostaLauta() {
+        for (int y = 0; y < korkeus; y++) {
+            for (int x = 0; x < leveys; x++) {
+                if (lauta[x][y].onkoOsuttu()) {
+                    System.out.print("@ ");
+                } else if (lauta[x][y].onkoOsaLaivaa()) {
+                    System.out.print("# ");
+                } else if (lauta[x][y].onkoAmmuttuJo()) {
+                    System.out.print("¤ ");
+                } else {
+                    System.out.print("~ ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
 }

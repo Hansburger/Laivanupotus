@@ -3,6 +3,7 @@ package laivanupotus.logiikka;
 import laivanupotus.domain.Laiva;
 //import laivanupotus.domain.Piste;
 import laivanupotus.domain.LaivaTyyppi;
+import laivanupotus.domain.Piste;
 import laivanupotus.domain.Suunta;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,7 +30,7 @@ public class PelilautaTest {
     @Before
     public void setUp() {
         testilauta = new Pelilauta(10, 10);
-        testilauta.createLauta();
+        testilauta.luoLauta();
     }
 
     @After
@@ -69,9 +70,14 @@ public class PelilautaTest {
     @Test
     public void laivanAsetusToimii() {
         Laiva testilaiva = new Laiva(LaivaTyyppi.TUKIALUS);
-        System.out.println(testilaiva);
         testilaiva.setLaivanPisteet(3, 4, Suunta.VAAKA);
-        System.out.println(testilaiva);
+        assertTrue(testilauta.asetaLaivaLaudalle(testilaiva));
+    }
+            
+    @Test
+    public void laivanAsetusVaihtaaLaudanPisteetOikein() {
+        Laiva testilaiva = new Laiva(LaivaTyyppi.TUKIALUS);
+        testilaiva.setLaivanPisteet(3, 4, Suunta.VAAKA);
         
         testilauta.asetaLaivaLaudalle(testilaiva);
         assertTrue(testilauta.getLauta()[3][4].onkoOsaLaivaa());
@@ -110,7 +116,29 @@ public class PelilautaTest {
     
     @Test
     public void voidaanAmpuaTyhjaanPisteeseen() {
-        assertTrue(testilauta.ammu(1,1));
+        assertTrue(testilauta.ammu(0,0));
+    }
+    
+    @Test
+    public void onkoKaikkiLaudanLaivatUponneetKunKaikkiinOnOsuttu() {
+        Laiva minilaiva = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
+        Laiva minilaiva2 = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
+        minilaiva.setLaivanPisteet(1, 1, Suunta.VAAKA);
+        minilaiva2.setLaivanPisteet(2, 2, Suunta.VAAKA);
+        testilauta.asetaLaivaLaudalle(minilaiva);
+        testilauta.asetaLaivaLaudalle(minilaiva2);
+        assertTrue(testilauta.ammu(1, 1));
+        assertTrue(testilauta.ammu(2, 2));
+        
+        assertTrue(testilauta.onkoKaikkiLaivatUpotettu());
     }
 
+    @Test
+    public void onkoKaikkiLaivatUpotettuKunYhteenkaanEiOleOsuttu() {
+        Laiva l = new Laiva(LaivaTyyppi.KRUISERI);
+        l.setLaivanPisteet(3, 4, Suunta.VAAKA);
+        testilauta.asetaLaivaLaudalle(l);
+        assertTrue(testilauta.ammu(4,4));
+        assertFalse(testilauta.onkoKaikkiLaivatUpotettu());
+    }
 }

@@ -10,7 +10,7 @@ public class Piste implements Comparable<Piste>{
     private int y;
     private boolean onkoLaiva = false;
     private boolean onkoAmmuttu = false;
-    
+    private boolean onkoOsuttu = false;
     
     public Piste(int inputX, int inputY) {
         this.x = inputX;
@@ -47,6 +47,14 @@ public class Piste implements Comparable<Piste>{
     
     public void setAmmuttu() {
         this.onkoAmmuttu = true;
+    }
+    
+    public boolean onkoOsuttu() {
+        return onkoOsuttu;
+    }
+    
+    public void setOsuttu() {
+        this.onkoOsuttu = true;
     }
 
     @Override
