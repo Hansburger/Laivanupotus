@@ -8,6 +8,8 @@ import laivanupotus.domain.Suunta;
 
 /**
  * Luokka joka sisältää pelin laivojen toiminnaliisuudet
+ * Sisältää tietorakenteen TreeSet johon on tallennettu kokoelma Piste-olioita
+ * joista laiva koostuu
  */
 
 public class Laiva {
@@ -98,24 +100,6 @@ public class Laiva {
         }
     }
     
-    /**
-     * Metodi tarkistaa onko laiva uponnut.
-     * 
-     * @return palauttaa true, jos laivan jokaiseen pisteeseen on osunut.
-     */
-    
-    public boolean upposiko() {
-        boolean upposiko = true;
-        Iterator<Piste> iter = laivanPisteet.iterator();
-        while (iter.hasNext()) {
-            Piste p = iter.next();
-            if (!p.onkoOsuttu()) {
-                return false;
-            }
-        }
-        return upposiko;
-    }
-
     @Override
     public String toString() {
         return "Laivan pituus: " + pituus + "; Pisteet: [" + laivanPisteet.toString() + "]; Suunta: " + suunta;

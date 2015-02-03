@@ -82,11 +82,8 @@ public class LaivaTest {
     
     @Test
     public void kannetunLaivanPisteetVaihtuu() {
-        System.out.println(tukialus);
         tukialus.setLaivanPisteet(2, 3, Suunta.VAAKA);
-        System.out.println(tukialus);
         tukialus.kaannaLaivanSuunta();
-        System.out.println(tukialus);
         Piste alkupiste = tukialus.getPisteet().first();
         Piste loppupiste = tukialus.getPisteet().last();
         
@@ -145,6 +142,23 @@ public class LaivaTest {
         for(Piste p : tukialus.getPisteet()) {
             assertEquals(true, p.onkoOsaLaivaa());
         }
+    }
+    
+    @Test
+    public void pystySuuntaPalauttaaOikeanKokonaisluvun() {
+        Suunta suunta = Suunta.PYSTY;
+        assertEquals(1, suunta.getSuunta());
+    }
+    
+    @Test
+    public void vaakaSuuntaPalauttaaOikeanKokonaisluvun() {
+        Suunta suunta = Suunta.VAAKA;
+        assertEquals(0, suunta.getSuunta());
+    }
+    
+    @Test
+    public void laivanToStringAntaaOikeanTekstin() {
+        assertEquals("Laivan pituus: 1; Pisteet: [[(1,1); kuuluu laivaan: true; ammuttu: false]]; Suunta: VAAKA", debugvene.toString());
     }
     
     

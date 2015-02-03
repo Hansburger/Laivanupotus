@@ -2,7 +2,8 @@
 package laivanupotus.domain;
 
 /**
- * Luokkaa käytetään pelilaudan ja laivojen toiminallisuuksien mahdollistamiseen
+ * Luokkaa käytetään pelilaudan ja laivojen alustamiseen.
+ * Piste-olioon tallennetaan onko se osa laivaa ja erilaisia 
  */
 
 public class Piste implements Comparable<Piste>{
@@ -56,6 +57,13 @@ public class Piste implements Comparable<Piste>{
     public void setOsuttu() {
         this.onkoOsuttu = true;
     }
+    
+    /**
+     * Metodilla verrataan kahta piste-oliota.
+     * @param t verrattava piste
+     * @return Metodi palauttaa -1 jos verrattavan pisteen koordinaatit ovat pienemmät
+     * kuin verrattavan, 0 jos pisteet ovat samat ja 1 jos verrattava on isompi.
+     */
 
     @Override
     public int compareTo(Piste t) {

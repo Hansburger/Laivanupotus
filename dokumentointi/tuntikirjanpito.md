@@ -15,3 +15,5 @@
 - Su 1.2.2015 - 3.5h - Laivan enumeraattorien jakaminen omiin luokkiin, teko‰lyluokan ensimm‰inen versio. Alustavan javadoc-dokumentoinnin tekeminen.
 
 - Ma 2.2.2015 - 3.5h - Luokalle Pelilauta luotiin tulosta-metodi. Ohessa selvisi, ett‰ osa metodien parametreista asettui v‰‰rin. Vaikka virhe ilmeni, mit‰‰n ongelmaa ei varsinaisesti ollut, sill‰ sama virhe oli tehty johdonmukaisesti kaikkialle. Tehtiin pieni‰ muutoksia joita koodikatselmointi kehotti tekem‰‰n. Tehtiin metodi joka tarkistaa onko kaikki laivat uponneet, jolloin peli pit‰‰ p‰‰tt‰‰ (luotiin myˆs testit metodille).
+
+- Ti 3.2.2015 - 3h - Testauksessa ilmeni ettei tietokonepelaajan teko‰ly toiminut ollenkaan joten sit‰ piti korjata. Kohteenetsinn‰n korjaaminen onnistui. Tietokoneen teko‰ly saattaa nyt toimia oikein. Luettiin graafisen k‰yttˆliittym‰n tekemisest‰.

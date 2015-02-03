@@ -106,7 +106,7 @@ public class PelilautaTest {
     
     @Test
     public void eiVoidaAmpuaUlosKentasta() {
-        assertFalse(testilauta.ammu(11, 11));
+        assertFalse(testilauta.ammu(10, 10));
     }
     
     @Test
@@ -116,7 +116,7 @@ public class PelilautaTest {
     
     @Test
     public void voidaanAmpuaTyhjaanPisteeseen() {
-        assertTrue(testilauta.ammu(0,0));
+        assertFalse(testilauta.ammu(0,0));
     }
     
     @Test
