@@ -53,9 +53,9 @@ public class Tietokone {
      * Metodi on testausta varten Metodilla voi määrittää mihin tietokone ampuu,
      * joten on mahdollista testata toimiiko tavallinen ampuminen
      *
-     * @param x
-     * @param y
-     * @return
+     * @param x kohteen x-koordinaatti
+     * @param y kohteen y-koordinaatti
+     * @return palauttaa true jos osui, false jos ei
      */
     public boolean ammuKoordinaatteihin(int x, int y) {
         if (lauta.ammu(x, y)) {
@@ -114,7 +114,7 @@ public class Tietokone {
     /**
      * Metodi palauttaa Pisteen johon on viimeksi ammuttu
      *
-     * @return
+     * @return Piste-olio edellisestä kohteesta
      */
     public Piste edellinenKohde() {
         return edellinenKohde;
