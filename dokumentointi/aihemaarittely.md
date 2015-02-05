@@ -8,6 +8,5 @@ Tarkoitus on tehd‰ laivanupotuspeli. Peliin tulee mahdollisuus pelata yksin tiet
 **K‰ytt‰j‰n toiminnot:**
 
 * voi valita pelaajien lukum‰‰r‰n
-* voi valita millaisia laivoja peliss‰ on
 * voi aloittaa pelin
 * voi pelin sis‰ll‰ yritt‰‰ arvata miss‰ vastustajan laivat ovat

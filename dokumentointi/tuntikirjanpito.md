@@ -17,3 +17,5 @@
 - Ma 2.2.2015 - 3.5h - Luokalle Pelilauta luotiin tulosta-metodi. Ohessa selvisi, että osa metodien parametreista asettui väärin. Vaikka virhe ilmeni, mitään ongelmaa ei varsinaisesti ollut, sillä sama virhe oli tehty johdonmukaisesti kaikkialle. Tehtiin pieniä muutoksia joita koodikatselmointi kehotti tekemään. Tehtiin metodi joka tarkistaa onko kaikki laivat uponneet, jolloin peli pitää päättää (luotiin myös testit metodille).
 
 - Ti 3.2.2015 - 3h - Testauksessa ilmeni ettei tietokonepelaajan tekoäly toiminut ollenkaan joten sitä piti korjata. Kohteenetsinnän korjaaminen onnistui. Tietokoneen tekoäly saattaa nyt toimia oikein. Luettiin graafisen käyttöliittymän tekemisestä.
+
+- To 5.2.2015  - 4h - Kokeiltiin käyttöliittymän tekemistä ja yksinkertaisen ikkunan piirtämistä ruudulle. Luokkakaavio päivitettiin. Toteutettiin luokat Pelaaja ja Tulostaulu ja niille testit. Tehtiin erillinen luokka joka alustaa annetulle pelilauta-oliolle laivat, siltä puuttuu vielä testit.

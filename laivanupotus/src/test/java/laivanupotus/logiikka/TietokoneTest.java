@@ -35,8 +35,6 @@ public class TietokoneTest {
     public void setUp() {
         testilauta = new Pelilauta(5, 5);
         testilautaPieni = new Pelilauta(2,2);
-        testilauta.luoLauta();
-        testilautaPieni.luoLauta();
         kone = new Tietokone(testilauta);
         kone2 = new Tietokone(testilautaPieni);
     }
@@ -82,9 +80,7 @@ public class TietokoneTest {
         l.setLaivanPisteet(3, 3, Suunta.VAAKA);
         testilauta.asetaLaivaLaudalle(l);
         assertTrue(kone.ammuKoordinaatteihin(3, 3));
-        testilauta.tulostaLauta();
         boolean osui = kone.ammu();
-        testilauta.tulostaLauta();
         Piste p = kone.edellinenKohde();
         int kohdeX = p.getX();
         int kohdeY = p.getY();

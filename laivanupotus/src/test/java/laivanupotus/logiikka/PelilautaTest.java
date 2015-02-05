@@ -30,7 +30,6 @@ public class PelilautaTest {
     @Before
     public void setUp() {
         testilauta = new Pelilauta(10, 10);
-        testilauta.luoLauta();
     }
 
     @After
@@ -101,7 +100,7 @@ public class PelilautaTest {
         testilauta.asetaLaivaLaudalle(laiva1);
         testilauta.asetaLaivaLaudalle(laiva2);
         
-        assertEquals("Laivoja pelikentalla: " + 1, testilauta.getLaivojenMaara());
+        assertEquals("Laivoja pelikentällä: " + 1, testilauta.getLaivojenMaara());
     }
     
     @Test

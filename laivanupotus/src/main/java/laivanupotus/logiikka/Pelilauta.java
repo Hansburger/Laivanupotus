@@ -22,6 +22,7 @@ public class Pelilauta {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.lauta = new Piste[leveys][korkeus];
+        luoLauta();
     }
 
     /**
@@ -185,7 +186,7 @@ public class Pelilauta {
     }
 
     public String getLaivojenMaara() {
-        return "Laivoja pelikentalla: " + laudanLaivat.size();
+        return "Laivoja pelikentällä: " + laudanLaivat.size();
     }
     
     /**

@@ -72,36 +72,18 @@ public class Tietokone {
     /**
      * Metodi arpoo X- ja Y-koordinaatit tarkistaen onko niihin jo ammuttu jotka
      * se asettaa palautettavalle Piste-oliolle
+     * sisältää kamalan do-whilen
      *
      * @return palauttaa Piste-olion
      */
     private Piste arvoKohde() {
-//        int x = random.nextInt(lauta.getLeveys());
-//        int y = random.nextInt(lauta.getKorkeus());
         int x;
         int y;
         do {
             x = random.nextInt(lauta.getLeveys());
             y = random.nextInt(lauta.getKorkeus());
         } while (lauta.getLauta()[x][y].onkoAmmuttuJo());
-          
         
-//        if (edellinenKohde != null) {
-//            if (edellinenKohde.getX() == x && edellinenKohde.getY() == y) {
-//                x = random.nextInt(lauta.getLeveys());
-//                y = random.nextInt(lauta.getKorkeus());
-//            } else if (lauta.getLauta()[x][y].onkoAmmuttuJo()) {
-//                x = random.nextInt(lauta.getLeveys());
-//                y = random.nextInt(lauta.getKorkeus());
-//            }
-//
-//        }
-
-//        } else if (edellinenKohde == null) {
-//            arvoKohde();
-//        } else if (edellinenKohde.getX() == x && edellinenKohde.getY() == y) {
-//            arvoKohde();
-//        }
         return new Piste(x, y);
     }
 
