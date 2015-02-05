@@ -30,14 +30,27 @@ public class Peli {
         System.out.println(pelaajanLauta.getLaivojenMaara()); // tulostaa 1
     }
     
+    
+    /**
+     * Metodi alustaa laivat Tietokoneen pelilaudalle käyttäen LaivojenAlustaja-
+     * oliota
+     */
     public void alustaLaivatTietokoneelle() {
         alustaja.alustaLaivat(tietokoneenLauta);
     }
     
+    /**
+     * Metodi alustaa laivat Pelaajan pelilaudalle käyttäen LaivojenAlustaja-oliota
+     */
     public void alustaLaivatPelaajalle() {
         alustaja.alustaLaivat(pelaajanLauta);
     }
     
+    /**
+     * Metodi tarkistaa onko mahdollista lisata laivaa pelaajan laudalle
+     * @param laiva annettu Laiva-olio
+     * @return palauttaa false jos Laivaa ei voi lisätä
+     */
     public boolean lisaaLaiva(Laiva laiva) {
         return pelaajanLauta.asetaLaivaLaudalle(laiva);
     }
