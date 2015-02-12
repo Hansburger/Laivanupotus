@@ -24,7 +24,7 @@
 
 - Ke 11.2.2015 - 3h - Käyttöliittymän muotoilua ja OhJan käyttöliittymämateriaalin kertausta. Alustusikkuna valmis, Pelin ikkunan aloitettu.
 
-- To 12.2.2015 - 5h - Pelin logiikan simulointia varten tehty PeliIkkuna-käyttöliittymäluokka, tapahtumakuuntelija tehty pelilaudan klikkailemista varten. Sekvenssikaaviot tehty Ammu- ja Aloita Peli -käyttötapauksista. Peli on tässä vaiheessa jokseenkin pelattavassa tilassa. Muutama testi lisää.
+- To 12.2.2015 - 6.5h - Pelin logiikan simulointia varten tehty PeliIkkuna-käyttöliittymäluokka, tapahtumakuuntelija tehty pelilaudan klikkailemista varten. Sekvenssikaaviot tehty Ammu- ja Aloita Peli -käyttötapauksista. Peli on tässä vaiheessa jokseenkin pelattavassa tilassa. Muutama testi lisää.
 
 
 
