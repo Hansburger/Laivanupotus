@@ -67,7 +67,6 @@ public class Piste implements Comparable<Piste>{
 
     @Override
     public int compareTo(Piste t) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //        compareto jos pienempi palauta -1, jos isompi palauta 1, jos sama palauta 0
         int x = t.getX();
         int y = t.getY();
