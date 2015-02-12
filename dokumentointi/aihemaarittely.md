@@ -1,12 +1,15 @@
 # Aihe: Laivanupotus
 
-Tarkoitus on tehd‰ laivanupotuspeli. Peliin tulee mahdollisuus pelata yksin tietokonetta vastaan ja hotseat-moodi jossa voi pelata toisen pelaajan kanssa.
+Tarkoitus on tehd√§ laivanupotuspeli. Peliin tulee mahdollisuus pelata yksin tietokonetta vastaan.
 
-**K‰ytt‰j‰t:** 
+**K√§ytt√§j√§t:** 
 * Pelaaja
 
-**K‰ytt‰j‰n toiminnot:**
+**K√§ytt√§j√§n toiminnot:**
 
-* voi valita pelaajien lukum‰‰r‰n
+* voi ilmoittaa nimens√§
+* voi valita pelikent√§n koon
 * voi aloittaa pelin
-* voi pelin sis‰ll‰ yritt‰‰ arvata miss‰ vastustajan laivat ovat
+* voi pelin sis√§ll√§ yritt√§√§ arvata miss√§ vastustajan laivat ovat
+* voi tarkastella ohjeita
+* voi tarkastella pistetuloksia
