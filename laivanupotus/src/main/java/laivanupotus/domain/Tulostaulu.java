@@ -1,7 +1,7 @@
 
 package laivanupotus.domain;
 
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
@@ -42,18 +42,18 @@ public class Tulostaulu {
      * @return String-olio
      */
     
-    @Override
-    public String toString() {
-        Iterator<Pelaaja> iter = pelaajat.iterator();
-        Pelaaja p = null;
-        StringBuffer b = new StringBuffer();
-        while (iter.hasNext()) {
-            p = iter.next();
-            b.append(p.getNimi());
-            b.append(": ");
-            b.append(p.getPisteet());
-            b.append("\n");
-        }
-        return b.toString();
-    }
+//    @Override
+//    public String toString() {
+//        Iterator<Pelaaja> iter = pelaajat.iterator();
+//        Pelaaja p = null;
+//        StringBuffer b = new StringBuffer();
+//        while (iter.hasNext()) {
+//            p = iter.next();
+//            b.append(p.getNimi());
+//            b.append(": ");
+//            b.append(p.getPisteet());
+//            b.append("\n");
+//        }
+//        return b.toString();
+//    }
 }

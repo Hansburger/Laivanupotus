@@ -19,3 +19,12 @@
 - Ti 3.2.2015 - 3h - Testauksessa ilmeni ettei tietokonepelaajan tekoäly toiminut ollenkaan joten sitä piti korjata. Kohteenetsinnän korjaaminen onnistui. Tietokoneen tekoäly saattaa nyt toimia oikein. Luettiin graafisen käyttöliittymän tekemisestä.
 
 - To 5.2.2015  - 4h - Kokeiltiin käyttöliittymän tekemistä ja yksinkertaisen ikkunan piirtämistä ruudulle. Luokkakaavio päivitettiin. Toteutettiin luokat Pelaaja ja Tulostaulu ja niille testit. Tehtiin erillinen luokka joka alustaa annetulle pelilauta-oliolle laivat, siltä puuttuu vielä testit.
+
+- Ti 10.2.2015 - 2h - Testien kirjoittamista logiikkaluokille. Testit tehty LaivojenAsettelijalle ja pelilogiikalle. Tarpeettomien metodien poistamista jotka pudottivat testikattavuutta.
+
+- Ke 11.2.2015 - 3h - Käyttöliittymän muotoilua ja OhJan käyttöliittymämateriaalin kertausta. Alustusikkuna valmis, Pelin ikkunan aloitettu.
+
+- To 12.2.2015 - 5h - Pelin logiikan simulointia varten tehty PeliIkkuna-käyttöliittymäluokka, tapahtumakuuntelija tehty pelilaudan klikkailemista varten. Sekvenssikaaviot tehty Ammu- ja Aloita Peli -käyttötapauksista. Peli on tässä vaiheessa jokseenkin pelattavassa tilassa. Muutama testi lisää.
+
+
+

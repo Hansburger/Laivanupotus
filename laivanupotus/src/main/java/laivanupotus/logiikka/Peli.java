@@ -3,6 +3,7 @@ package laivanupotus.logiikka;
 import laivanupotus.domain.Laiva;
 import laivanupotus.domain.LaivaTyyppi;
 import laivanupotus.domain.Suunta;
+import laivanupotus.domain.Tulostaulu;
 
 /**
  * Luokka hoitaa pelilautojen käsittelyn
@@ -13,21 +14,26 @@ public class Peli {
 
     private Pelilauta pelaajanLauta;
     private Pelilauta tietokoneenLauta;
-    private LaivojenAlustaja alustaja = new LaivojenAlustaja();
+    private LaivojenAlustaja alustaja;
+    private Tietokone tekoaly;
+    private Tulostaulu tulokset;
 
     public Peli(int leveys, int korkeus) {
-
-        this.pelaajanLauta = new Pelilauta(leveys, korkeus);
-        
-        this.tietokoneenLauta = new Pelilauta(leveys, korkeus);
-        
-        alustaLaivatPelaajalle();
-        alustaLaivatTietokoneelle();
-        
-        pelaajanLauta.tulostaLauta();
-        tietokoneenLauta.tulostaLauta();
-        
-        System.out.println(pelaajanLauta.getLaivojenMaara()); // tulostaa 1
+        this.alustaja = new LaivojenAlustaja();
+        this.tulokset = new Tulostaulu();
+        luoLaudat(leveys, korkeus);
+    }
+    
+    /**
+     * Metodi alustaa Pelilauta-olion pelaajalle ja tietokoneelle
+     * @param leveys
+     * @param korkeus 
+     */
+    
+    private void luoLaudat(int leveys, int korkeus) {
+        pelaajanLauta = new Pelilauta(leveys, korkeus);
+        tietokoneenLauta = new Pelilauta(leveys, korkeus);
+        this.tekoaly = new Tietokone(pelaajanLauta);
     }
     
     
@@ -48,12 +54,13 @@ public class Peli {
     
     /**
      * Metodi tarkistaa onko mahdollista lisata laivaa pelaajan laudalle
+     * (ei käytössä toistaiseksi)
      * @param laiva annettu Laiva-olio
      * @return palauttaa false jos Laivaa ei voi lisätä
      */
-    public boolean lisaaLaiva(Laiva laiva) {
-        return pelaajanLauta.asetaLaivaLaudalle(laiva);
-    }
+//    public boolean lisaaLaiva(Laiva laiva) {
+//        return pelaajanLauta.asetaLaivaLaudalle(laiva);
+//    }
     
     public Pelilauta getTietokoneenLauta() {
         return tietokoneenLauta;
@@ -62,5 +69,9 @@ public class Peli {
     public Pelilauta getPelaajanLauta() {
         return pelaajanLauta;
     }
+    
+    public Tietokone getTietokone() {
+        return tekoaly; 
+   }
 
 }

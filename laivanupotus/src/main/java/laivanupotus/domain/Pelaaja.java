@@ -14,9 +14,6 @@ public class Pelaaja implements Comparable<Pelaaja>{
         this.pisteet = 0;
     }
 
-    public Pelaaja() {
-    }
-
     public int getPisteet() {
         return pisteet;
     }

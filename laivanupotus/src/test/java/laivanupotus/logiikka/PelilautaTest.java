@@ -64,7 +64,9 @@ public class PelilautaTest {
         testilaiva.setLaivanPisteet(3, 4, Suunta.VAAKA);
         testilauta.asetaLaivaLaudalle(testilaiva);
         assertTrue(testilauta.ammu(3,4));
+        assertFalse(testilauta.ammu(3,4));
     }
+
     
     @Test
     public void laivanAsetusToimii() {
@@ -86,11 +88,35 @@ public class PelilautaTest {
         assertTrue(testilauta.getLauta()[7][4].onkoOsaLaivaa());
     }
     
+    
     @Test
     public void laivaaEiVoiAsettaaUlosLaudalta() {
         Laiva testilaiva = new Laiva(LaivaTyyppi.TUKIALUS);
-        testilaiva.setLaivanPisteet(8, 8, Suunta.VAAKA);
+        testilaiva.setLaivanPisteet(10, 10, Suunta.VAAKA);
         assertFalse(testilauta.asetaLaivaLaudalle(testilaiva));
+        assertFalse(testilauta.laivaOnLaudanSisalla(testilaiva));
+    }
+    
+    @Test
+    public void laivaaEiVoidaSijoittaaNegatiivisiinKoordinaatteihin() {
+        Laiva testilaiva = new Laiva(LaivaTyyppi.TUKIALUS);
+        testilaiva.setLaivanPisteet(-1, -1, Suunta.VAAKA);
+        assertFalse(testilauta.laivaOnLaudanSisalla(testilaiva));
+        assertFalse(testilauta.asetaLaivaLaudalle(testilaiva));
+    }
+    
+    @Test
+    public void laivanAsettamisenTarkistusToimii() {
+        Laiva testilaiva = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
+        testilaiva.setLaivanPisteet(10, 10, Suunta.VAAKA);
+        assertFalse(testilauta.laivaOnLaudanSisalla(testilaiva));
+    }
+    
+    @Test
+    public void laivanAsettamisenTarkistusToimiiRajatapauksessa() {
+        Laiva testilaiva = new Laiva(LaivaTyyppi.PARTIOVENE);
+        testilaiva.setLaivanPisteet(9, 9, Suunta.VAAKA);
+        assertFalse(testilauta.laivaOnLaudanSisalla(testilaiva));
     }
     
     @Test
@@ -100,7 +126,20 @@ public class PelilautaTest {
         testilauta.asetaLaivaLaudalle(laiva1);
         testilauta.asetaLaivaLaudalle(laiva2);
         
-        assertEquals("Laivoja pelikentällä: " + 1, testilauta.getLaivojenMaara());
+        assertEquals(1, testilauta.getLaivojenMaara());
+    }
+    
+    @Test
+    public void onkoPisteessaLaivaKunSiinaOnLaiva() {
+        Laiva testilaiva = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
+        testilaiva.setLaivanPisteet(1, 1, Suunta.VAAKA);
+        testilauta.asetaLaivaLaudalle(testilaiva);
+        assertTrue(testilauta.onkoPisteessaLaiva(1, 1));
+    }
+    
+    @Test
+    public void onkoPisteessaLaivaKunSiinaEiOleLaivaa() {
+        assertFalse(testilauta.onkoPisteessaLaiva(1, 1));
     }
     
     @Test
@@ -116,6 +155,17 @@ public class PelilautaTest {
     @Test
     public void voidaanAmpuaTyhjaanPisteeseen() {
         assertFalse(testilauta.ammu(0,0));
+    }
+    
+    @Test
+    public void onkoPisteeseenAmmuttuJosSiihenOnAmmuttu() {
+        testilauta.ammu(0, 0);
+        assertTrue(testilauta.onkoPisteeseenAmmuttu(0, 0));
+    }
+    
+    @Test
+    public void onkoPisteeseenAmmuttuJosSiihenEiOleAmmuttu() {
+        assertFalse(testilauta.onkoPisteeseenAmmuttu(0, 0));
     }
     
     @Test

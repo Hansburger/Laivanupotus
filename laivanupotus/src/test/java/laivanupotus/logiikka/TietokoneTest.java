@@ -115,4 +115,9 @@ public class TietokoneTest {
         assertTrue(testilautaPieni.getLauta()[1][0].onkoAmmuttuJo());
         assertTrue(testilautaPieni.getLauta()[1][1].onkoAmmuttuJo());
     }
+    
+    @Test
+    public void tietokoneenGetLautaToimii() {
+        assertEquals(0, kone.getLauta().getLaivojenMaara());
+    }
 }

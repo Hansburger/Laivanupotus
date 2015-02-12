@@ -7,9 +7,9 @@ import laivanupotus.domain.Piste;
 
 /**
  * Luokka tarjoaa toiminnallisuudet laivojen käsittelyyn pelissä Pelilaudan koko
- * perustuu käyttäjän antamiin parametreihin laudan koosta.
- * Tärkeä huomio, koordinaatit menevät 0...X-1 ja 0...Y-1.
- * Eli korkeuden ollessa 10, se menee 0...9
+ * perustuu käyttäjän antamiin parametreihin laudan koosta. Tärkeä huomio,
+ * koordinaatit menevät 0...X-1 ja 0...Y-1. Eli korkeuden ollessa 10, se menee
+ * 0...9
  */
 public class Pelilauta {
 
@@ -29,7 +29,7 @@ public class Pelilauta {
      * Metodi alustaa pelilaudan perustuen laudalle annettujen oliomuuttujien
      * mukaan
      */
-    public void luoLauta() {
+    private void luoLauta() {
 
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
@@ -58,8 +58,8 @@ public class Pelilauta {
 //         System.out.println(lauta[x][y]);
 //    }
     /**
-     * Asettaa parametrina annetun laivan pelilaudalle. Pitää myös huolen,
-     * että annettu laiva on mahdollista sijoittaa laudalle.
+     * Asettaa parametrina annetun laivan pelilaudalle. Pitää myös huolen, että
+     * annettu laiva on mahdollista sijoittaa laudalle.
      *
      * @param laiva annettu laiva joka halutaan sijoittaa laudalle
      * @return palauttaa true jos laivan asettaminen onnistui
@@ -95,11 +95,11 @@ public class Pelilauta {
             return false;
         }
 
-        if (alkuPiste.getX() > leveys || alkuPiste.getY() > korkeus) {
+        if (alkuPiste.getX() >= leveys || alkuPiste.getY() >= korkeus) {
             return false;
         }
 
-        if (loppuPiste.getX() > (leveys - 1) || loppuPiste.getY() > (korkeus - 1)) {
+        if (loppuPiste.getX() >= leveys || loppuPiste.getY() >= korkeus) {
             return false;
         }
 
@@ -149,7 +149,7 @@ public class Pelilauta {
      * siinä on laiva
      */
     public boolean ammu(int x, int y) {
-        
+
         if (x >= leveys || y >= korkeus) {
             return false;
         } else if (x < 0 || y < 0) {
@@ -164,7 +164,7 @@ public class Pelilauta {
             lauta[x][y].setAmmuttu();
             return false;
         }
-        
+
     }
 
     /**
@@ -185,32 +185,53 @@ public class Pelilauta {
         return kaikkiUponneet;
     }
 
-    public String getLaivojenMaara() {
-        return "Laivoja pelikentällä: " + laudanLaivat.size();
+    public int getLaivojenMaara() {
+        return laudanLaivat.size();
     }
-    
+
     /**
-     * Metodi tulostaa laudan tilanteen. Jos pisteessä laivaan on osuttu, 
+     * Metodi tulostaa laudan tilanteen. Jos pisteessä laivaan on osuttu,
      * piirretään @, jos Pisteessä on osa laivaa piirretään #, jos Pisteeseen on
      * ammuttu piirretään ¤ ja jos siinä on vain tyhjää merta piirretään ~
      */
-
-    public void tulostaLauta() {
-        for (int y = 0; y < korkeus; y++) {
-            for (int x = 0; x < leveys; x++) {
-                if (lauta[x][y].onkoOsuttu()) {
-                    System.out.print("@ ");
-                } else if (lauta[x][y].onkoOsaLaivaa()) {
-                    System.out.print("# ");
-                } else if (lauta[x][y].onkoAmmuttuJo()) {
-                    System.out.print("¤ ");
-                } else {
-                    System.out.print("~ ");
-                }
-            }
-            System.out.println();
+//    public void tulostaLauta() {
+//        for (int y = 0; y < korkeus; y++) {
+//            for (int x = 0; x < leveys; x++) {
+//                if (lauta[x][y].onkoOsuttu()) {
+//                    System.out.print("@ ");
+//                } else if (lauta[x][y].onkoOsaLaivaa()) {
+//                    System.out.print("# ");
+//                } else if (lauta[x][y].onkoAmmuttuJo()) {
+//                    System.out.print("¤ ");
+//                } else {
+//                    System.out.print("~ ");
+//                }
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//    }
+    /**
+     * Metodi tarkistaa onko parametrina annetuissa koordinaateissa laivaa
+     *
+     * @param x annettu laudan x-koordinaatti
+     * @param y annettu laudan y-koordinaatti
+     * @return palauttaa true jos pisteessä on laiva
+     */
+    public boolean onkoPisteessaLaiva(int x, int y) {
+        if (lauta[x][y] != null && x > -1 && x < leveys && y > -1 && y < korkeus) {
+            return lauta[x][y].onkoOsaLaivaa();
+        } else {
+            return false;
         }
-        System.out.println();
+    }
+
+    public boolean onkoPisteeseenAmmuttu(int x, int y) {
+        if (lauta[x][y] != null && x > -1 && x < leveys && y > -1 && y < korkeus) {
+            return lauta[x][y].onkoAmmuttuJo();
+        } else {
+            return false;
+        }
     }
 
 }
