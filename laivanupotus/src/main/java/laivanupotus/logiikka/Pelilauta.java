@@ -18,7 +18,7 @@ public class Pelilauta {
     private int leveys;
     private int korkeus;
     private ArrayList<Laiva> laudanLaivat = new ArrayList<Laiva>();
-    private TreeSet<Piste> kielletytPisteet = new TreeSet<Piste>();
+    private ArrayList<Piste> kielletytPisteet = new ArrayList<Piste>();
 
     public Pelilauta(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -117,15 +117,18 @@ public class Pelilauta {
      * muulloin true
      */
     private boolean laivaEiMeneToisenLaivanPaalle(Laiva laiva) {
-
-        if (laudanLaivat.isEmpty()) {
-            return true;
-        }
-
+        
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
 
         for (Piste piste : laivaPisteet) {
-            if (kielletytPisteet.contains(piste)) {
+            int tempX = piste.getX();
+            int tempY = piste.getY();
+            
+            if (lauta[tempX][tempY].onkoOsaLaivaa()) {
+                return false;
+            }
+
+            if (kielletytPisteet.contains(lauta[tempX][tempY])) {
                 return false;
             }
         }
@@ -260,7 +263,7 @@ public class Pelilauta {
             int x = p.getX();
             int y = p.getY();
 
-            kielletytPisteet.add(lauta[x][y]);
+//            kielletytPisteet.add(lauta[x][y]);
             
             if (x + 1 < leveys) {
                 kielletytPisteet.add(lauta[x + 1][y]);
