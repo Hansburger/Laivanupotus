@@ -91,24 +91,6 @@ public class Piste implements Comparable<Piste>{
     }
     
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Piste other = (Piste) obj;
-        if (this.x != other.x) {
-            return false;
-        }
-        if (this.y != other.y) {
-            return false;
-        }
-        return true;
-    }
-    
-    @Override
     public String toString() {
         return "(" + this.x + "," + this.y + "); " + "kuuluu laivaan: " + onkoLaiva + "; ammuttu: " + onkoAmmuttu;
     }

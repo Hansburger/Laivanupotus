@@ -163,6 +163,7 @@ public class PelilautaTest {
 
     @Test
     public void onkoPisteeseenAmmuttuJosSiihenEiOleAmmuttu() {
+        testilauta.ammu(1,0);
         assertFalse(testilauta.onkoPisteeseenAmmuttu(0, 0));
     }
 
