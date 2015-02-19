@@ -26,5 +26,9 @@
 
 - To 12.2.2015 - 6.5h - Pelin logiikan simulointia varten tehty PeliIkkuna-käyttöliittymäluokka, tapahtumakuuntelija tehty pelilaudan klikkailemista varten. Sekvenssikaaviot tehty Ammu- ja Aloita Peli -käyttötapauksista. Peli on tässä vaiheessa jokseenkin pelattavassa tilassa. Muutama testi lisää.
 
+- Ke 18.2.2015 - 3.5h - Koska käyttöliittymän piirtämä pelialusta ei toimi oikein epäsymmetrisillä pelilaudoilla niin mahdollisuus luoda sellaisia poistettiin. Tehty alkeellinen ikkuna ohjeille ja yhdistetty se aloitusikkunan menuun.
+
+- To 19.2.2015 - 5h - Ohjenäyttö ja viimeinen sekvenssikaavio tehty. Yritetty pohtia miten laivat saisi alustettua siten ettei kaksi laivaa olisi kiinni toisissaan ja siten luotu uusi metodi tarkistamaan laivojen asettelu pelilaudalle. Metodin testaaminen tapahtuu yhtä-aikaa laivojen asettelun yhteydessä. Laivoihin osuminen lisää pelaajan pisteitä, mutta ei tallenna niitä vielä mihinkään. Pelin päätyttyä ei pysty enää klikkailemaan tietokoneen pelilautaa.
+
 
 

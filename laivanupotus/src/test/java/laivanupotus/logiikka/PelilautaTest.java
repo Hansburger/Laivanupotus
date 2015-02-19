@@ -190,4 +190,38 @@ public class PelilautaTest {
         assertTrue(testilauta.ammu(4,4));
         assertFalse(testilauta.onkoKaikkiLaivatUpotettu());
     }
+    
+    @Test
+    public void laivaaEiVoiLaittaaToiseenKiinni() {
+        Laiva l = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        Laiva l2 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        Laiva l3 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        Laiva l4 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        Laiva l5 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        
+        l.setLaivanPisteet(1, 1, Suunta.VAAKA);
+        l2.setLaivanPisteet(0, 0, Suunta.PYSTY);
+        l3.setLaivanPisteet(1, 0, Suunta.VAAKA);
+        l4.setLaivanPisteet(1, 2, Suunta.VAAKA);
+        l5.setLaivanPisteet(4, 0, Suunta.PYSTY);
+        
+        
+        assertTrue(testilauta.asetaLaivaLaudalle(l));
+        assertFalse(testilauta.asetaLaivaLaudalle(l2));
+        assertFalse(testilauta.asetaLaivaLaudalle(l3));
+        assertFalse(testilauta.asetaLaivaLaudalle(l4));
+        assertFalse(testilauta.asetaLaivaLaudalle(l5));
+    }
+    
+    @Test
+    public void pystyssaOlevaLaivaEiOtaToistaLaivaaViereensa() {
+        Laiva l = new Laiva(LaivaTyyppi.TUKIALUS);
+        l.setLaivanPisteet(4, 3, Suunta.PYSTY);
+        
+        Laiva l2 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        l.setLaivanPisteet(5, 4, Suunta.VAAKA);
+        
+        assertTrue(testilauta.asetaLaivaLaudalle(l));
+        assertFalse(testilauta.asetaLaivaLaudalle(l2));
+    }
 }

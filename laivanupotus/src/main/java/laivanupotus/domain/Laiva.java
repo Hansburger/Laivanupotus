@@ -24,7 +24,6 @@ public class Laiva {
         this.suunta = suunta.VAAKA;
         laivanPisteet = new TreeSet<Piste>();
         alustaLaiva();
-
     }
 
     
@@ -35,8 +34,7 @@ public class Laiva {
 //        alustetaan laiva vaakatasoon, luodaan laivalle pisteet alkaen koordinaateista (1,1):
 //        selkeyttÃ¤Ã¤ testaamista.
         for (int i = 0; i < this.pituus; ++i) {
-            Piste p = new Piste(1, 1);
-            p.setX(i + 1);
+            Piste p = new Piste(i + 1, 1);
             p.setOnLaiva();
             laivanPisteet.add(p);
         }

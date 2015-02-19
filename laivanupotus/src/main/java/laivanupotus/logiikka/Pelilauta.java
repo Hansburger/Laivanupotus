@@ -4,6 +4,7 @@ import java.util.*;
 
 import laivanupotus.domain.Laiva;
 import laivanupotus.domain.Piste;
+import laivanupotus.domain.Suunta;
 
 /**
  * Luokka tarjoaa toiminnallisuudet laivojen käsittelyyn pelissä Pelilaudan koko
@@ -17,6 +18,7 @@ public class Pelilauta {
     private int leveys;
     private int korkeus;
     private ArrayList<Laiva> laudanLaivat = new ArrayList<Laiva>();
+    private TreeSet<Piste> kielletytPisteet = new TreeSet<Piste>();
 
     public Pelilauta(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -65,8 +67,9 @@ public class Pelilauta {
      * @return palauttaa true jos laivan asettaminen onnistui
      */
     public boolean asetaLaivaLaudalle(Laiva laiva) {
-        if (laivaOnLaudanSisalla(laiva) && LaivaEiMeneToisenLaivanPaalle(laiva)) {
+        if (laivaOnLaudanSisalla(laiva) && laivaEiMeneToisenLaivanPaalle(laiva)) {
             laudanLaivat.add(laiva);
+            paivitaLaivojenYmparoivatPisteet(laiva);
             for (Piste p : laiva.getPisteet()) {
                 int tempX = p.getX();
                 int tempY = p.getY();
@@ -113,15 +116,16 @@ public class Pelilauta {
      * @return palauttaa false jos laiva menee toisen laivan päälle laudalla,
      * muulloin true
      */
-    public boolean LaivaEiMeneToisenLaivanPaalle(Laiva laiva) {
+    private boolean laivaEiMeneToisenLaivanPaalle(Laiva laiva) {
+
+        if (laudanLaivat.isEmpty()) {
+            return true;
+        }
 
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
 
         for (Piste piste : laivaPisteet) {
-            int tempX = piste.getX();
-            int tempY = piste.getY();
-
-            if (lauta[tempX][tempY].onkoOsaLaivaa()) {
+            if (kielletytPisteet.contains(piste)) {
                 return false;
             }
         }
@@ -193,6 +197,7 @@ public class Pelilauta {
      * Metodi tulostaa laudan tilanteen. Jos pisteessä laivaan on osuttu,
      * piirretään @, jos Pisteessä on osa laivaa piirretään #, jos Pisteeseen on
      * ammuttu piirretään ¤ ja jos siinä on vain tyhjää merta piirretään ~
+     * Metodi ainoastaan debuggausta varten ja siksi poissa käytöstä
      */
 //    public void tulostaLauta() {
 //        for (int y = 0; y < korkeus; y++) {
@@ -226,6 +231,13 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * Metodi tarkista onko parametrina annettuihin koordinaatteihin jo ammuttu.
+     *
+     * @param x annettu laudan x-koordinaatti
+     * @param y annettu laudan y-koordinaatti
+     * @return palauttaa true jos pisteeseen on ammuttu
+     */
     public boolean onkoPisteeseenAmmuttu(int x, int y) {
         if (lauta[x][y] != null && x > -1 && x < leveys && y > -1 && y < korkeus) {
             return lauta[x][y].onkoAmmuttuJo();
@@ -233,5 +245,95 @@ public class Pelilauta {
             return false;
         }
     }
+
+    /**
+     * Metodi lisaa parametrina annetun laivan pisteet ja ymparoivat pisteet
+     * kielletytPisteet settiin, jonka avulla määritetään minne voidaan asettaa
+     * laiva ja minne ei.
+     *
+     * @param laiva parametrina annettu Laiva-olio
+     */
+    private void paivitaLaivojenYmparoivatPisteet(Laiva laiva) {
+        TreeSet<Piste> laivanPisteet = laiva.getPisteet();
+
+        for (Piste p : laivanPisteet) {
+            int x = p.getX();
+            int y = p.getY();
+
+            kielletytPisteet.add(lauta[x][y]);
+            
+            if (x + 1 < leveys) {
+                kielletytPisteet.add(lauta[x + 1][y]);
+            }
+            if (x - 1 >= 0) {
+                kielletytPisteet.add(lauta[x - 1][y]);
+            }
+            if (y - 1 >= 0) {
+                kielletytPisteet.add(lauta[x][y - 1]);
+            }
+            if (y + 1 < korkeus) {
+                kielletytPisteet.add(lauta[x][y + 1]);
+            }
+
+        }
+    }
+
+//    private void paivitaPlaceholder(Laiva laiva) {
+//        TreeSet<Piste> laivanPisteet = laiva.getPisteet();
+//
+//        int alkuX = laivanPisteet.first().getX();
+//        int alkuY = laivanPisteet.first().getY();
+//        int loppuX = laivanPisteet.last().getX();
+//        int loppuY = laivanPisteet.last().getY();
+//
+////      jos suunta on pysty, lisätään x-1, x ja x+1
+////      ensimmäiselle laitetaan myös y-1 ja viimeiselle y+1      
+////      kaikki tämä, jos mahdollista, if helvetti ensues
+//        if (laiva.getSuunta() == Suunta.PYSTY) {
+//
+//            if (alkuY - 1 >= 0) {
+//                kielletytPisteet.add(lauta[alkuX][alkuY - 1]);
+//            }
+//            if (loppuY + 1 < korkeus) {
+//                kielletytPisteet.add(lauta[loppuX][loppuY + 1]);
+//            }
+//            for (Piste p : laivanPisteet) {
+//                int x = p.getX();
+//                int y = p.getY();
+//                kielletytPisteet.add(p);
+//
+//                if (x + 1 < leveys) {
+//                    kielletytPisteet.add(lauta[x + 1][y]);
+//                }
+//                if (x - 1 >= 0) {
+//                    kielletytPisteet.add(lauta[x - 1][y]);
+//                }
+//            }
+//
+//        } else {
+//
+//            if (alkuX - 1 >= 0) {
+//                kielletytPisteet.add(lauta[alkuX - 1][alkuY]);
+//            }
+//            if (loppuX + 1 < leveys) {
+//                kielletytPisteet.add(lauta[loppuX + 1][loppuY]);
+//            }
+//
+//            for (Piste p : laivanPisteet) {
+//                int x = p.getX();
+//                int y = p.getY();
+//                kielletytPisteet.add(p);
+//
+//                if (y - 1 >= 0) {
+//                    kielletytPisteet.add(lauta[x][y - 1]);
+//                }
+//                if (y + 1 < korkeus) {
+//                    kielletytPisteet.add(lauta[x][y + 1]);
+//                }
+//            }
+//
+//        }
+//
+//    }
 
 }

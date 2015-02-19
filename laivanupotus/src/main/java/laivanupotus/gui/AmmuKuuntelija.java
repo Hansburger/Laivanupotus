@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import laivanupotus.domain.Pelaaja;
 import laivanupotus.domain.Piste;
 import laivanupotus.domain.Tulostaulu;
 import laivanupotus.gui.PeliIkkuna;
@@ -17,14 +18,16 @@ public class AmmuKuuntelija implements ActionListener {
     private int y;
     private PeliIkkuna peliIkkuna;
     private Peli pelilogiikka;
+    private Pelaaja p;
     private final PelinaytonPiste pp;
 
-    public AmmuKuuntelija(PeliIkkuna ikkuna, Peli logiikka, int x, int y, PelinaytonPiste pp) {
+    public AmmuKuuntelija(PeliIkkuna ikkuna, Peli logiikka, int x, int y, PelinaytonPiste pp, Pelaaja pelaaja) {
         this.peliIkkuna = ikkuna;
         this.pelilogiikka = logiikka;
         this.x = x;
         this.y = y;
         this.pp = pp;
+        this.p = pelaaja;
     }
 
     @Override
@@ -36,10 +39,12 @@ public class AmmuKuuntelija implements ActionListener {
         if (peliIkkuna.getPelilogiikka().getTietokoneenLauta().ammu(pp.getPiste())) {
             pp.setText("@");
             pp.setBackground(Color.RED);
+            p.lisaaPisteita(420);
 
-            if (peliIkkuna.getPelilogiikka().getTietokoneenLauta().onkoKaikkiLaivatUpotettu()
-                    || peliIkkuna.getPelilogiikka().getPelaajanLauta().onkoKaikkiLaivatUpotettu()) {
-                peliIkkuna.setTitle("Peli päättyi!");
+            if (peliIkkuna.getPelilogiikka().getTietokoneenLauta().onkoKaikkiLaivatUpotettu()) {
+                peliIkkuna.setTitle("Pelaaja Voitti!");
+                p.lisaaPisteita(1000);
+                peliIkkuna.lopetaPeli();
                 return;
             }
         } else {
@@ -47,8 +52,12 @@ public class AmmuKuuntelija implements ActionListener {
             pp.setBackground(Color.CYAN);
             boolean tietokoneOsui = false;
             while (pelilogiikka.getTietokone().ammu()) {
-
+                
                 paivitaPelaajanLautaPanel(true);
+                if (peliIkkuna.getPelilogiikka().getPelaajanLauta().onkoKaikkiLaivatUpotettu()) {
+                    peliIkkuna.setTitle("Tietokone Voitti!");
+                    peliIkkuna.lopetaPeli();
+                }
                 tietokoneOsui = true;
             }
             if (!tietokoneOsui) {

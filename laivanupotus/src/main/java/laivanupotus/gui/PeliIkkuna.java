@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,15 +29,16 @@ public class PeliIkkuna extends JFrame {
     private Peli pelilogiikka;
     private Pelaaja pelaaja;
     private Tulostaulu tulokset;
+    private ArrayList<PelinaytonPiste> kuuntelijaKokoelma = new ArrayList<>();
 
     // Panel
     private JPanel PelaajanPelilautaPanel;
 
-    public PeliIkkuna(int x, int y) {
+    public PeliIkkuna(int x, int y, Pelaaja p) {
         pelilogiikka = new Peli(x, y);
-        Pelilauta pelaaja = pelilogiikka.getPelaajanLauta();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        this.pelaaja = p;
     }
 
     public JPanel luoPelilautaPanel(boolean pelaajalle) {
@@ -64,7 +67,8 @@ public class PeliIkkuna extends JFrame {
                 }
 
                 if (!pelaajalle) {
-                    pp.addActionListener(new AmmuKuuntelija(this, pelilogiikka, x, y, pp));
+                    pp.addActionListener(new AmmuKuuntelija(this, pelilogiikka, x, y, pp, pelaaja));
+                    kuuntelijaKokoelma.add(pp);
                 }
                 PelilautaPanel.add(pp);
             }
@@ -87,6 +91,14 @@ public class PeliIkkuna extends JFrame {
 
     public Peli getPelilogiikka() {
         return pelilogiikka;
+    }
+    
+    public void lopetaPeli() {
+        for (PelinaytonPiste pp : kuuntelijaKokoelma) {
+            for (ActionListener ak : pp.getActionListeners()) {
+                pp.removeActionListener(ak);
+            }
+        }
     }
 
 }

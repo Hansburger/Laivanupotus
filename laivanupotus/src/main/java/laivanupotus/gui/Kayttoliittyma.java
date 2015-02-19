@@ -30,7 +30,7 @@ public class Kayttoliittyma extends JFrame {
     private JMenu aloitusMenu;
     private javax.swing.JMenuBar menuBar;
     // MenuItems
-    private javax.swing.JMenuItem uusiPeli;
+    private javax.swing.JMenuItem ohjeItem;
     private javax.swing.JMenuItem lopetaPeli;
 
     // Label
@@ -41,7 +41,7 @@ public class Kayttoliittyma extends JFrame {
     // TextField
     private javax.swing.JTextField nimiKentta;
     private javax.swing.JTextField XKentta;
-    private javax.swing.JTextField YKentta;
+//    private javax.swing.JTextField YKentta;
 
     // Button
     private javax.swing.JButton aloitaButton;
@@ -73,18 +73,19 @@ public class Kayttoliittyma extends JFrame {
         aloitusMenu = new javax.swing.JMenu();
         lopetaPeli = new javax.swing.JMenuItem();
 
-        uusiPeli = new javax.swing.JMenuItem();
+        ohjeItem = new javax.swing.JMenuItem();
 
         aloitusMenu.setText("Menu");
-        uusiPeli.setText("Uusi Peli");
+        ohjeItem.setText("Ohjeet");
         lopetaPeli.setText("Lopeta");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel.add(aloitusMenu);
 
-        uusiPeli.addActionListener(new java.awt.event.ActionListener() {
+        ohjeItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OhjeIkkuna oi = new OhjeIkkuna();
             }
         });
 
@@ -94,7 +95,7 @@ public class Kayttoliittyma extends JFrame {
             }
         });
 
-        aloitusMenu.add(uusiPeli);
+        aloitusMenu.add(ohjeItem);
         aloitusMenu.add(lopetaPeli);
     }
 
@@ -107,14 +108,14 @@ public class Kayttoliittyma extends JFrame {
         nimiLabel.setText("Kuka olet:");
 
         kentanKokoLabel = new javax.swing.JLabel();
-        kentanKokoLabel.setText("Kentän koko (X, Y):");
+        kentanKokoLabel.setText("Kentän koko:");
 
         nimiKentta = new javax.swing.JTextField();
 
         XKentta = new javax.swing.JTextField();
         XKentta.setText("10");
-        YKentta = new javax.swing.JTextField();
-        YKentta.setText("10");
+//        YKentta = new javax.swing.JTextField();
+//        YKentta.setText("10");
 
         aloitaButton = new javax.swing.JButton();
         aloitaButton.setText("Aloita Peli");
@@ -133,7 +134,7 @@ public class Kayttoliittyma extends JFrame {
         cont.add(nimiKentta);
         cont.add(kentanKokoLabel);
         cont.add(XKentta);
-        cont.add(YKentta);
+//        cont.add(YKentta);
         cont.add(aloitaButton);
         cont.add(virheLabel);
     }
@@ -146,11 +147,19 @@ public class Kayttoliittyma extends JFrame {
 //        });
 //    }
     private void aloitaButtonActionPerformed(java.awt.event.ActionEvent e) {
-        int x = Integer.valueOf(XKentta.getText());
-        int y = Integer.valueOf(YKentta.getText());
-
+        int x = 0;
+        try {
+            x = Integer.valueOf(XKentta.getText());
+        } catch (NumberFormatException exc) {
+            virheLabel.setText("Vain numerot kelpaavat kokoon");
+        }
+        
+        x = Integer.valueOf(XKentta.getText());
+        int y = x;
+        
         if (tarkistaLaudanKoko(x, y) && tarkistaNimi()) {
-            PeliIkkuna pi = new PeliIkkuna(x, y);
+            this.pelaaja = new Pelaaja(nimiKentta.getText());
+            PeliIkkuna pi = new PeliIkkuna(x, y, pelaaja);
             luoPeliIkkuna(pi);
         }
 
@@ -159,7 +168,7 @@ public class Kayttoliittyma extends JFrame {
     private boolean tarkistaLaudanKoko(int x, int y) {
         try {
             x = Integer.valueOf(XKentta.getText());
-            y = Integer.valueOf(YKentta.getText());
+//            y = Integer.valueOf(YKentta.getText());
         } catch (NumberFormatException e) {
             virheLabel.setText("Vain numerot kelpaavat kokoon");
             return false;
@@ -201,5 +210,5 @@ public class Kayttoliittyma extends JFrame {
         pi.pack();
         pi.setVisible(true);
     }
-
+    
 }
