@@ -196,18 +196,22 @@ public class PelilautaTest {
         Laiva l3 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
         Laiva l4 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
         Laiva l5 = new Laiva(LaivaTyyppi.SUKELLUSVENE);
+        Laiva l6 = new Laiva(LaivaTyyppi.TUKIALUS);
 
         l.setLaivanPisteet(1, 1, Suunta.VAAKA);
         l2.setLaivanPisteet(0, 0, Suunta.PYSTY);
         l3.setLaivanPisteet(1, 0, Suunta.VAAKA);
         l4.setLaivanPisteet(1, 2, Suunta.VAAKA);
         l5.setLaivanPisteet(4, 0, Suunta.PYSTY);
+        l6.setLaivanPisteet(1, 1, Suunta.VAAKA);
 
         assertTrue(testilauta.asetaLaivaLaudalle(l));
         assertFalse(testilauta.asetaLaivaLaudalle(l2));
         assertFalse(testilauta.asetaLaivaLaudalle(l3));
         assertFalse(testilauta.asetaLaivaLaudalle(l4));
         assertFalse(testilauta.asetaLaivaLaudalle(l5));
+        assertFalse(testilauta.asetaLaivaLaudalle(l6));
+        assertEquals(1, testilauta.getLaivojenMaara());
     }
 
     @Test
@@ -216,7 +220,7 @@ public class PelilautaTest {
         l.setLaivanPisteet(4, 4, Suunta.PYSTY);
 
         Laiva l2 = new Laiva(LaivaTyyppi.DEBUGPELASTUSVENE);
-        l.setLaivanPisteet(4, 4, Suunta.PYSTY);
+        l2.setLaivanPisteet(4, 5, Suunta.PYSTY);
 
         testilauta.asetaLaivaLaudalle(l);
         testilauta.asetaLaivaLaudalle(l2);

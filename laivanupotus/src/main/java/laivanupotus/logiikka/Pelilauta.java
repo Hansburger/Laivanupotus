@@ -120,6 +120,7 @@ public class Pelilauta {
         
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
 
+        // nyt toimii
         for (Piste piste : laivaPisteet) {
             int tempX = piste.getX();
             int tempY = piste.getY();
