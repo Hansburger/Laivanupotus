@@ -42,7 +42,7 @@ public class AmmuKuuntelija implements ActionListener {
             p.lisaaPisteita(420);
 
             if (peliIkkuna.getPelilogiikka().getTietokoneenLauta().onkoKaikkiLaivatUpotettu()) {
-                peliIkkuna.setTitle("Pelaaja Voitti!");
+                peliIkkuna.setTitle(peliIkkuna.getPelaaja().getNimi()+" Voitti!");
                 p.lisaaPisteita(1000);
                 peliIkkuna.lopetaPeli();
                 return;

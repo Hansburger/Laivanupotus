@@ -30,5 +30,5 @@
 
 - To 19.2.2015 - 6h - Ohjenäyttö ja viimeinen sekvenssikaavio tehty. Yritetty pohtia miten laivat saisi alustettua siten ettei kaksi laivaa olisi kiinni toisissaan ja siten luotu uusi metodi tarkistamaan laivojen asettelu pelilaudalle. Metodin testaaminen tapahtuu yhtä-aikaa laivojen asettelun yhteydessä. Laivoihin osuminen lisää pelaajan pisteitä, mutta ei tallenna niitä vielä mihinkään. Pelin päätyttyä ei pysty enää klikkailemaan tietokoneen pelilautaa. Muutettu pelilaudan kielletyt pisteet ArrayListiksi, nyt laivat eivät mene vierekkäin. Toiminnallisuus on myös testattu ja todettu toimivaksi.
 
-
+- To 26.2.2015 - 1.5h - Uusi sekvenssikaavio tehty tietokoneen ampumisesta. Luokkakaavioon lisätty Main. Kirjoitettu rakennekuvaus ja käyttöohje. Tehty tarkistuksia että ohjelma toimii.
 

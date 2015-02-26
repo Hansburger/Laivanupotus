@@ -139,13 +139,6 @@ public class Kayttoliittyma extends JFrame {
         cont.add(virheLabel);
     }
 
-//    public static void main(String[] args) {
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Kayttoliittyma().setVisible(true);
-//            }
-//        });
-//    }
     private void aloitaButtonActionPerformed(java.awt.event.ActionEvent e) {
         int x = 0;
         try {
@@ -211,4 +204,8 @@ public class Kayttoliittyma extends JFrame {
         pi.setVisible(true);
     }
     
+    
+    public Pelaaja getPelaaja() {
+        return this.pelaaja;
+    }
 }

@@ -80,6 +80,10 @@ public class PeliIkkuna extends JFrame {
     public void setPelaaja(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
     }
+    
+    public Pelaaja getPelaaja() {
+        return pelaaja;
+    }
 
     public void setPelaajanPelilautaPanel(JPanel pelaajanRuudukkoPanel) {
         this.PelaajanPelilautaPanel = pelaajanRuudukkoPanel;
