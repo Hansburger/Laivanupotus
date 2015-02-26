@@ -120,7 +120,6 @@ public class Pelilauta {
         
         TreeSet<Piste> laivaPisteet = laiva.getPisteet();
 
-        // nyt toimii
         for (Piste piste : laivaPisteet) {
             int tempX = piste.getX();
             int tempY = piste.getY();
@@ -198,7 +197,7 @@ public class Pelilauta {
     }
 
     /**
-     * Metodi tulostaa laudan tilanteen. Jos pisteessä laivaan on osuttu,
+     * Metodi tulostaa laudan tilanteen konsoliin. Jos pisteessä laivaan on osuttu,
      * piirretään @, jos Pisteessä on osa laivaa piirretään #, jos Pisteeseen on
      * ammuttu piirretään ¤ ja jos siinä on vain tyhjää merta piirretään ~
      * Metodi ainoastaan debuggausta varten ja siksi poissa käytöstä

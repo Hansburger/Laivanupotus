@@ -41,6 +41,13 @@ public class PeliIkkuna extends JFrame {
         this.pelaaja = p;
     }
 
+    
+    /**
+     * Luo pelilautaa kuvastavan paneelin.
+     * @param pelaajalle luodaan pelaajalle jos true
+     * @return palauttaa JPanel olion
+     */
+    
     public JPanel luoPelilautaPanel(boolean pelaajalle) {
         GridLayout leiska = new GridLayout(pelilogiikka.getPelaajanLauta().getLeveys(), pelilogiikka.getPelaajanLauta().getKorkeus());
         JPanel PelilautaPanel = new JPanel(leiska);
@@ -96,6 +103,12 @@ public class PeliIkkuna extends JFrame {
     public Peli getPelilogiikka() {
         return pelilogiikka;
     }
+
+    
+    /**
+     * Metodi poistaa pelinäytön pisteiltä ammukuuntelijat, jotta 
+     * pelin päätyttyä ei pysty enää klikkailemaan.
+     */
     
     public void lopetaPeli() {
         for (PelinaytonPiste pp : kuuntelijaKokoelma) {

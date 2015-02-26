@@ -1,6 +1,12 @@
 
 package laivanupotus.domain;
 
+/**
+ * Suunta määrittää laivalle suunnan jonka perusteella sen asetuksessa tiedetään
+ * kuinka päin sen pitää olla.
+ * @author Mikael
+ */
+
 public enum Suunta {
 
         VAAKA(0), PYSTY(1);

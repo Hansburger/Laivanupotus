@@ -3,7 +3,8 @@ package laivanupotus.domain;
 
 /**
  * Luokkaa käytetään pelilaudan ja laivojen alustamiseen.
- * Piste-olioon tallennetaan onko se osa laivaa ja erilaisia 
+ * Piste-olioon tallennetaan tiedot siitä onko siihen ammuttu, onko siinä laiva
+ * ja onko siinä olevaan laivaan osuttu.
  */
 
 public class Piste implements Comparable<Piste>{
